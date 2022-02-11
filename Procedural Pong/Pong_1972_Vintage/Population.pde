@@ -16,8 +16,8 @@ void init() {
     
     scoreSize = height / 16;
     
-    //int angle = 45;
+    angle = Math.signum(random(-1, 1)) * 180 + Math.signum(random(-1, 1)) * 90 - 45;
     speed = ballRadius / 2;
-    bounceLeniency = ballRadius / 2;
+    bounceLeniency = ballRadius * 0.9;
     newVel();
 }

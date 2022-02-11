@@ -16,6 +16,7 @@ void setup() {
   ellipseMode(RADIUS);
   textAlign(CENTER, CENTER);
   init();
+  surface.setAlwaysOnTop(true);
 }
 
 void draw() {
@@ -25,7 +26,6 @@ void draw() {
   
   moveBall();
   drawBall();
-  newVel();
   
   
   rect(pad1x, pad1y, pad1w, pad1h); // left
