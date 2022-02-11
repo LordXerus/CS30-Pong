@@ -12,8 +12,8 @@ void moveBall() {
     float top = 0, bottom = height;
 
     if (
-        yMove > 0 && yBall + yMove + ballRadius > bottom + bounceLeniency ||
-        yMove < 0 && yBall + yMove - ballRadius < top - bounceLeniency
+        yMove > 0 && yBall + yMove + ballRadius > bottom ||
+        yMove < 0 && yBall + yMove - ballRadius < top
         ) { 
         angle = -angle; 
         newVel();
@@ -22,8 +22,8 @@ void moveBall() {
     float left = xLeftNet, right = xRightNet;
     
     if (
-        xMove > 0 && xBall + xMove + ballRadius > right + bounceLeniency||
-        xMove < 0 && xBall + xMove - ballRadius < left - bounceLeniency
+        xMove > 0 && xBall + xMove + ballRadius > right ||
+        xMove < 0 && xBall + xMove - ballRadius < left
         ) { 
         angle = 180-angle; /*speed=0;*/
         newVel();
