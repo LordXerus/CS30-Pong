@@ -20,12 +20,14 @@ void setup() {
 }
 
 void draw() {
-  background(#000000);
+  background(focused ? #000000 : #444444);
   fill(#ffffff);
   stroke(#ffffff);
   
   moveBall();
   drawBall();
+  
+  movePaddle();
   
   
   rect(pad1x, pad1y, pad1w, pad1h); // left
@@ -33,6 +35,11 @@ void draw() {
   line(xLeftNet, 0, xLeftNet, height); 
   line(xRightNet, 0, xRightNet, height);
   
+  fill(0, 0, 0, 0);
+  rect(score1x, scorey, 100, scoreSize);
+  rect(score2x, scorey, 100, scoreSize);
+  
+  fill(#ffffff);
   textSize(scoreSize);
   text(Float.toString(g), score1x, scorey);
   text(Float.toString(angle), score2x, scorey);
