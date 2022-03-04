@@ -33,6 +33,9 @@ void moveBall() {
             xMove > 0 && xBall + xMove > right ||
             xMove < 0 && xBall + xMove < left
             ) { 
+            
+            if(xMove > 0 && xBall + xMove > right) leftScore ++;
+            else rightScore ++;
 
             scored = true;
             scoredMillis = millis();
