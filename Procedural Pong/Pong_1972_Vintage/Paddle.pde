@@ -61,8 +61,8 @@ void move_PL(){
         
         
         
-        if (leftPrediction < pad1y) move_PL_up();
-        else if (leftPrediction > pad1y) move_PL_down();
+        if (leftPrediction < pad1y - pad1h) move_PL_up();
+        else if (leftPrediction > pad1y + pad1h) move_PL_down();
         
     }
 }
@@ -104,8 +104,8 @@ void move_PR(){
         
         
         
-        if (rightPrediction < pad2y) move_PR_up();
-        else if (rightPrediction > pad2y) move_PR_down();
+        if (rightPrediction < pad2y - pad2h) move_PR_up();
+        else if (rightPrediction > pad2y + pad2h) move_PR_down();
         
         
     }
