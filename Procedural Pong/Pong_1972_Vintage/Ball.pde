@@ -72,10 +72,11 @@ float predict_Y(float target_x) {
     return predict_Y(target_x, new PVector(xBall, yBall), new PVector(xMove, yMove), predict_path);
 }
 
+float s_xBall, s_yBall, s_yMove; // state of the previous prediction call is visible by Paddle
 float predict_Y(float target_x, PVector ballPos, PVector ballVel, ArrayList pathList) {
-    float s_xBall = ballPos.x;
-    float s_yBall = ballPos.y;
-    float s_yMove = ballVel.y;
+    s_xBall = ballPos.x;
+    s_yBall = ballPos.y;
+    s_yMove = ballVel.y;
     
     float multiplier = 1.0; // next speed step
     
@@ -110,10 +111,10 @@ float predict_Y(float target_x, PVector ballPos, PVector ballVel, ArrayList path
         
        
         
-        // ball will hit paddle first
+        // ball has hit paddle first
         if (req_xstep <= req_ystep || abs(delta) <= 0.01) break;
         
-        // ball will hit wall first
+        // ball has hit wall first
         s_yMove *= -1;
     }
     if (pathList != null) pathList.add(new PVector(s_xBall, s_yBall));

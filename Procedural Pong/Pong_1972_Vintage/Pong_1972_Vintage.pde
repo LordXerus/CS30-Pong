@@ -14,8 +14,8 @@ int startState = 0;
 int autoplayMode;
 
 void setup() {
-  //fullScreen();
-  size(500, 500);
+  fullScreen();
+  //size(500, 500);
   rectMode(RADIUS);
   ellipseMode(RADIUS);
   textAlign(CENTER, CENTER);

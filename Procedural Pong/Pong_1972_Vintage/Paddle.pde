@@ -47,7 +47,7 @@ void move_PL(){
                 leftPrediction = predict_Y(
                     pad1x + pad1w,
                     new PVector(pad2x - pad2w, t_predict),
-                    new PVector(-xMove, yMove),
+                    new PVector(-xMove, s_yMove),
                     leftPredictPath
                     );
             }
@@ -90,7 +90,7 @@ void move_PR(){
                 rightPrediction = predict_Y(
                     pad2x - pad2w,
                     new PVector(pad1x + pad1w, t_predict),
-                    new PVector(-xMove, yMove),
+                    new PVector(-xMove, s_yMove),
                     rightPredictPath
                     );
             }
