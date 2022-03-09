@@ -28,7 +28,7 @@ void draw() {
   
   if (startState == 0) {
       textSize(40);
-      textSize(40 * (width / textWidth("Choose Left Paddle Speed using 123")));
+      textSize(40 * (width*0.9 / textWidth("Choose Left Paddle Speed using 123")));
       text("Choose Left Paddle Speed using 123", width*0.5, height*0.2);
       if(keyPressed) {
           if (key == '1') pad1v *= 0.5;
@@ -47,7 +47,7 @@ void draw() {
   }
   else if (startState == 2) {
       textSize(40);
-      textSize(40 * (width / textWidth("Choose Left Paddle Speed using 123")));
+      textSize(40 * (width*0.9 / textWidth("Choose Right Paddle Speed using 123")));
       text("Choose Right Paddle Speed using 123", width*0.5, height*0.5);
       if(keyPressed) {
           if (key == '1') pad2v *= 0.5;
@@ -68,6 +68,7 @@ void draw() {
   else if (startState == 4) {
       textSize(40);
       textSize(40 * (width*0.5 / textWidth("Choose AutoPlay Mode")));
+      text("Choose AutoPlay Mode", width * 0.5, height * 0.2);
       text("1: No AP; 2: Right AP; 3: Left AP; 4: Dual AP", width * 0.5, height * 0.5);
       if(keyPressed && '1' <= key && key <= '4') {
           autoplayMode = key - '0';
