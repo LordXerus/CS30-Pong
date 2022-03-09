@@ -1,3 +1,5 @@
+import java.lang.*;
+
 float angle; 
 float speed = 1;
 float xMove, yMove;
@@ -60,6 +62,64 @@ void moveBall() {
             angle = getRandomAngle();
             newVel();
         }
+    }
+}
+
+ArrayList<PVector> path = new ArrayList<PVector>();
+
+float predict_Y(float target_x) {
+    float s_xBall = xBall;
+    float s_yBall = yBall;
+    float s_yMove = yMove;
+    
+    float multiplier = 1.0; // next speed step
+    
+    float delta = target_x - s_xBall;
+
+    // if the signs are different, the ball will move away from the paddle
+    
+    path.clear();
+    path.add(new PVector(xBall, yBall));
+    
+    while (true) {
+        
+        if (Math.signum(delta * xMove) <= 0) {
+            println("NaNed");
+            return Float.NaN;
+        }
+        
+        multiplier = 1.0;
+        float req_ystep = ( 
+            (s_yMove > 0) ? (height - s_yBall):
+            /*(s_yMove < 0) ? */(0 - s_yBall)
+        ) / (s_yMove * multiplier);
+        
+        delta = target_x - s_xBall;
+        println(target_x, s_xBall, delta, xMove, multiplier);
+        float req_xstep = delta / (xMove * multiplier);
+       
+        
+        multiplier = (req_xstep < req_ystep) ? req_xstep : req_ystep;
+        
+        // advance simulation
+        s_xBall += xMove * multiplier;
+        s_yBall += s_yMove * multiplier;
+        
+        path.add(new PVector(s_xBall, s_yBall));
+        
+        // ball will hit paddle first
+        if (req_xstep <= req_ystep || abs(delta) <= 0.01) return s_yBall;
+        
+        // ball will hit wall first
+        s_yMove *= -1;
+    }
+}
+    
+void drawPredictedPath(){
+    for (int i = 0; i < path.size() - 1; i++) {
+        PVector start = path.get(i);
+        PVector end = path.get(i+1);
+        line(start.x, start.y, end.x, end.y);
     }
 }
 

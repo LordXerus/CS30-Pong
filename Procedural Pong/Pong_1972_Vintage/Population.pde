@@ -22,6 +22,9 @@ void init() {
     angle = getRandomAngle();
     speed = ballRadius / 2;
     newVel();
+    
+    paddleTop = 0;
+    paddleBottom = height;
 }
 
 float getRandomAngle() {

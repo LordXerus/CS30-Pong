@@ -11,6 +11,8 @@ int leftScore = 0, rightScore = 0;
 int scoreSize;
 
 int startState = 0;
+int autoplayMode;
+
 void setup() {
   //fullScreen();
   size(500, 500);
@@ -57,6 +59,23 @@ void draw() {
       return;
   }
   
+  else if (startState == 3) {
+      if (keyPressed) return;
+      startState = 4;
+      return;
+  }
+  
+  else if (startState == 4) {
+      textSize(40);
+      textSize(40 * (width*0.5 / textWidth("Choose AutoPlay Mode")));
+      text("1: No AP; 2: Right AP; 3: Left AP; 4: Dual AP", width * 0.5, height * 0.5);
+      if(keyPressed && '1' <= key && key <= '4') {
+          autoplayMode = key - '0';
+          startState = 5;
+      }
+      return;
+  }
+  
   
   fill(#ffffff);
   stroke(#ffffff);
@@ -66,7 +85,8 @@ void draw() {
   
   movePaddle();
   
-  
+  fill(#ffffff);
+  stroke(#ffffff);
   
   rect(pad1x, pad1y, pad1w, pad1h); // left
   rect(pad2x, pad2y, pad2w, pad2h); // right
